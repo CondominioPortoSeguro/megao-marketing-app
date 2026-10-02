@@ -7,7 +7,8 @@ new vm.Script(polish,{filename:'polish.js'});
 assert(html.includes('polish.css')&&html.includes('polish.js'));
 assert(read('sw.js').includes('polish.css')&&read('sw.js').includes('polish.js'));
 const store={};
-const inner={added:'',querySelector(){return null},insertAdjacentHTML(_,s){this.added+=s}};
+const inner={added:'',querySelector(selector){return selector==='.hero'?hero:null},insertAdjacentHTML(_,s){this.added+=s}};
+const hero={querySelector(){return {set textContent(v){}}},insertAdjacentHTML(_,s){inner.added+=s}};
 const app={html:'',get innerHTML(){return this.html},set innerHTML(s){this.html=s;inner.added=''},
  querySelector(selector){return selector==='.inner'?inner:null},
  insertAdjacentHTML(_pos,s){this.html+=s}};
