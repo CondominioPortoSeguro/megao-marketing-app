@@ -1,0 +1,62 @@
+name: Diagnóstico público da instalação PWA
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  public-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar respostas HTTP e conteúdo público
+        shell: bash
+        run: |
+          base="https://megao-marketing-app.vercel.app"
+          for i in 1 2 3 4 5; do
+            echo "Tentativa $i: acesso externo ao Vinnyzau"
+            failures=0
+            for path in "/" "/manifest.webmanifest" "/sw.js" "/icon-192.png" "/icon-512.png"; do
+              status=$(curl -L --connect-timeout 10 --max-time 25 -s -o "/tmp/pwa-response" -w "%{http_code}" "$base$path" || echo "000")
+              kind=$(file -b --mime-type /tmp/pwa-response 2>/dev/null || echo "unavailable")
+              echo "$path: HTTP $status; tipo $kind"
+              if [ "$status" != "200" ]; then failures=$((failures+1)); fi
+            done
+            if [ "$failures" -eq 0 ]; then break; fi
+            sleep 12
+          done
+          if [ "$failures" -gt 0 ]; then
+            echo "::error::Algum arquivo do PWA nao pode ser acessado publicamente. Verifique Deployment Protection no projeto Vercel."
+            exit 1
+          fi
+          curl -fsSL "$base/manifest.webmanifest" -o /tmp/vinnyzau-manifest.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/vinnyzau-manifest.json'))
+          assert data['name']=='Vinnyzau',f"Manifesto incorreto: {data['name']}"
+          assert data.get('display')=='standalone'
+          print('OK: Manifesto publico correto: Vinnyzau')
+          PY
+      - name: Validar arquivos PNG do repositório
+        uses: actions/checkout@v4
+      - shell: python
+        run: |
+          import struct,zlib,pathlib
+          for size in [192,512]:
+            p=pathlib.Path(f'icon-{size}.png')
+            data=p.read_bytes()
+            assert data.startswith(bytes.fromhex('89504e470d0a1a0a')),f'{p}: assinatura PNG inválida'
+            width,height=struct.unpack_from('>II',data,16)
+            assert (width,height)==(size,size),f'{p}: tamanho incorreto {(width,height)}'
+            pos=8
+            found_end=False
+            while pos+12<=len(data):
+              length=struct.unpack_from('>I',data,pos)[0]
+              tag=data[pos+4:pos+8]
+              raw=data[pos+4:pos+8+length]
+              crc=struct.unpack_from('>I',data,pos+8+length)[0]
+              assert zlib.crc32(raw)==crc,f'{p}: erro de CRC do bloco {tag}'
+              pos+=length+12
+              if tag==b'IEND':
+                found_end=True
+                break
+            assert found_end,f'{p}: PNG incompleto'
+            print(f'OK: {p} com {size}x{size} e CRC íntegro')
