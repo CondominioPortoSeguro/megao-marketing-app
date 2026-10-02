@@ -1,7 +1,7 @@
 /** Offline smoke tests for the standalone Vinnyzau PWA. Run: npm test */
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');const read=n=>fs.readFileSync(path.join(root,n),'utf8');
-const html=read('index.html');const script=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];assert(script,'Main application script missing');
+const html=read('index.html');assert(html.includes('enhancements.js'));assert(html.includes('enhancements.css'));const script=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];assert(script,'Main application script missing');
 new vm.Script(script,{filename:'app.js'});console.log('PASS: JavaScript parses');
 const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.display,'standalone');assert.equal(manifest.name,'Vinnyzau');assert.equal(manifest.short_name,'Vinnyzau');assert(!html.includes('Vinnyzau Gestão'));assert(!html.includes('Megão Marketing'));assert.equal(manifest.short_name,'Vinnyzau');assert(html.includes('<title>Vinnyzau</title>'));
 for(const asset of ['index.html','sw.js','manifest.webmanifest','icon.svg','icon-192.png','icon-512.png','vercel.json'])assert(fs.existsSync(path.join(root,asset)),'Missing '+asset);

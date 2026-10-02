@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "description": "Megão Marketing - site instalável (PWA)",
   "scripts": {
-    "test": "node tests/smoke.js"
+    "test": "node tests/smoke.js && node tests/upgrades.js"
   }
 }
