@@ -5,7 +5,7 @@ const html=read('index.html');const main=html.split('<script>')[1]?.split('</scr
 const enhancement=read('enhancements.js');
 new vm.Script(enhancement,{filename:'enhancements.js'});
 assert(read('enhancements.css').includes('.vz-event-lines'));
-assert(/vinnyzau-v\\d+/.test(read('sw.js')));
+assert(read('sw.js').includes("const CACHE='vinnyzau-v"));
 const store={},app={value:'',set innerHTML(v){this.value=v},get innerHTML(){return this.value}};
 const ctx={structuredClone,Date,Math,Number,Array,JSON,Object,String,RegExp,Promise,console,
  localStorage:{getItem:k=>store[k]??null,setItem:(k,v)=>store[k]=v},
