@@ -1,7 +1,7 @@
 {
-  "name": "Vinnyzau Gestão",
-  "short_name": "Vinnyzau Gestão",
-  "description": "Gestão de marketing, estabelecimentos, calendário e criativos",
+  "name": "Vinnyzau",
+  "short_name": "Vinnyzau",
+  "description": "Vinnyzau: gestão de marcas, publicações, criativos e métricas",
   "id": "./",
   "start_url": "./index.html",
   "scope": "./",
