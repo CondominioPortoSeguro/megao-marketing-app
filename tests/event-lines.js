@@ -31,7 +31,7 @@ const five=dayMarkup(date);
 assert(five,'The scheduled day must be rendered');
 assert.equal((five.match(/class="vz-event-line"/g)||[]).length,5,'show all five events as strokes');
 assert(!five.includes('vz-event-more'),'no overflow numbers');
-assert(!/<small>\\d+<\\/small>/.test(five),'no numeric count below day');
+assert(!five.includes('<small>5</small>'),'no numeric count below day');
 assert.equal((five.match(new RegExp('background:'+companyA.color,'g'))||[]).length,3);
 assert.equal((five.match(new RegExp('background:'+companyB.color,'g'))||[]).length,2);
 assert.equal((dayMarkup('2030-08-13').match(/class="vz-event-line"/g)||[]).length,1);
@@ -39,7 +39,7 @@ console.log('PASS: five events appear as five colour-coded strokes with no numbe
 vm.runInContext('ui.filter='+JSON.stringify(companyA.id)+';render()',ctx);
 const filtered=dayMarkup(date);
 assert.equal((filtered.match(/class="vz-event-line"/g)||[]).length,3);
-assert(!/<small>\\d+<\\/small>/.test(filtered));
+assert(!filtered.includes('<small>3</small>'));
 assert(!filtered.includes('vz-event-more'));
 console.log('PASS: company filter shows three strokes for three events of the same company');
 state.posts[0].brandId=companyB.id;
