@@ -22,7 +22,7 @@ vm.createContext(ctx);vm.runInContext(main,ctx);vm.runInContext(extra,ctx);vm.ru
 assert(inner.added.includes('vinnyzau'));assert(inner.added.includes('vz-profile-trigger'));
 assert(inner.added.includes('vz-today-highlights'));assert(inner.added.includes('vz-action-strip'));
 console.log('PASS: refined dashboard, header and quick navigation render');
-ctx.vzOpenProfile();assert(app.html.includes('Meu perfil')&&app.html.includes('vzPhotoInput'));
+ctx.vzOpenProfile();assert(app.html.includes('Configurações')&&app.html.includes('vzPhotoInput'));
 console.log('PASS: profile photo upload available');
 const form={elements:{namedItem:n=>({value:n==='name'?'Vini':n==='role'?'Criador de conteúdo':''})}};
 ctx.vzSaveProfile({preventDefault(){},target:form});
