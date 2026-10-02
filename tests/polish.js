@@ -1,7 +1,7 @@
 /** Test the polished Vinnyzau shell and local profile without a browser. */
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(root,x),'utf8');
-const html=read('index.html');const main=html.match(/<script>([\\s\\S]*?)<\\/script>/)?.[1];
+const html=read('index.html');const main=html.split('<script>')[1]?.split('</script>')[0];
 const extra=read('enhancements.js'),polish=read('polish.js');
 new vm.Script(polish,{filename:'polish.js'});
 assert(html.includes('polish.css')&&html.includes('polish.js'));
