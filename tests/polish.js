@@ -8,7 +8,7 @@ assert(html.includes('polish.css')&&html.includes('polish.js'));
 assert(read('sw.js').includes('polish.css')&&read('sw.js').includes('polish.js'));
 const store={};
 const inner={added:'',querySelector(selector){return selector==='.hero'?hero:null},insertAdjacentHTML(_,s){this.added+=s}};
-const hero={querySelector(){return {set textContent(v){}}},insertAdjacentHTML(_,s){inner.added+=s}};
+const heroFields={};const hero={querySelector(selector){return heroFields[selector]||(heroFields[selector]={textContent:''})},insertAdjacentHTML(_,s){inner.added+=s}};
 const app={html:'',get innerHTML(){return this.html},set innerHTML(s){this.html=s;inner.added=''},
  querySelector(selector){return selector==='.inner'?inner:null},
  insertAdjacentHTML(_pos,s){this.html+=s}};
@@ -27,7 +27,7 @@ console.log('PASS: profile photo upload available');
 const form={elements:{namedItem:n=>({value:n==='name'?'Vini':n==='role'?'Criador de conteúdo':''})}};
 ctx.vzSaveProfile({preventDefault(){},target:form});
 assert.equal(JSON.parse(store['vinnyzau-profile-v1']).name,'Vini');
-assert(inner.added.includes('Vini'));console.log('PASS: profile saved locally and displayed');
+assert(heroFields['.eyebrow'].textContent.includes('Vini'));console.log('PASS: profile saved locally and displayed');
 ctx.vzOpenQuick();assert(app.html.includes('O que vamos criar?'));
 ctx.vzQuickAction('task');assert(app.html.includes('Nova tarefa'));
 console.log('PASS: quick task creation opens existing form');
