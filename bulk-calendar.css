@@ -1,0 +1,46 @@
+
+/* Vinnyzau: convenient, touch-friendly bulk company reassignment */
+.vz-bulk-toggle{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid #dacffa;
+ background:linear-gradient(115deg,#f1eaff,#fdfbff);color:#3b2564;border-radius:20px;padding:14px;
+ box-shadow:0 6px 19px #6545a50d;margin:18px 0}
+.vz-bulk-toggle>span:first-child{width:42px;height:42px;display:grid;place-items:center;background:#7135ec;color:#fff;
+ font-size:21px;border-radius:14px}
+.vz-bulk-toggle>span:nth-child(2){flex:1;min-width:0}
+.vz-bulk-toggle b{display:block;font-size:14px;font-weight:900}
+.vz-bulk-toggle small{display:block;font-size:11px;color:#766a8b;margin-top:3px}
+.vz-bulk-chevron{font-size:26px;color:#7142d8}
+.vz-bulk-panel{border-radius:23px;padding:18px;background:#fff;border:1px solid #e9e2f5;
+ box-shadow:0 13px 35px #33226311;margin:-5px 0 20px}
+.vz-bulk-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.vz-bulk-eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:900;color:#8d79bb}
+.vz-bulk-heading h2{font-size:19px;letter-spacing:-.5px;color:#291b45;margin:5px 0}
+.vz-bulk-heading p{font-size:12px;color:#80768e;line-height:1.5;margin:0 0 14px}
+.vz-bulk-close{flex:0 0 auto;background:#f5f0ff;color:#7c5ab6;font-size:23px;border-radius:50%;
+ width:34px;height:34px;display:grid;place-items:center}
+.vz-bulk-controls{display:grid;gap:12px}
+.vz-bulk-controls label,.vz-bulk-target label{display:block;font-size:12px;font-weight:900;color:#504065;margin:0 0 6px}
+.vz-bulk-scope{display:flex;background:#f5f1ff;border-radius:13px;gap:5px;padding:4px}
+.vz-bulk-scope button{flex:1;background:transparent;border-radius:11px;padding:11px 8px;font-size:12px;color:#645875;font-weight:900}
+.vz-bulk-scope button.active{background:white;color:#7135ec;box-shadow:0 3px 12px #48338a16}
+.vz-bulk-selectbar{display:flex;align-items:center;flex-wrap:wrap;gap:7px;justify-content:space-between;
+ margin:17px 0 9px;border-bottom:1px solid #efebf6;padding-bottom:10px;font-size:12px;color:#736586}
+.vz-bulk-selectbar strong{color:#3c255e}
+.vz-bulk-selectbar>div{display:flex;align-items:center;gap:4px}
+.vz-bulk-selectbar .link{font-size:11px;padding:7px 3px}
+.vz-bulk-list{max-height:min(41dvh,340px);overflow:auto;overscroll-behavior:contain;border:1px solid #ede7f5;
+ border-radius:14px;background:#fcfbff}
+.vz-bulk-row{display:flex;align-items:center;gap:11px;cursor:pointer;padding:12px 11px;border-bottom:1px solid #f0edf7;
+ border-left:4px solid var(--vz-bulk-company,#7135ec);background:white}
+.vz-bulk-row:last-child{border-bottom:0}
+.vz-bulk-row:has(input:checked){background:#f4edff}
+.vz-bulk-row input{appearance:auto;accent-color:#7135ec;width:20px;height:20px;flex:0 0 auto;margin:0}
+.vz-bulk-row-content{display:grid;gap:4px;min-width:0}
+.vz-bulk-row-content strong{font-size:13px;overflow-wrap:anywhere}
+.vz-bulk-row-content small{font-size:11px;color:#746a81}
+.vz-bulk-from{font-size:11px;font-weight:900;color:#655192}
+.vz-bulk-empty{padding:20px;text-align:center;font-size:12px;color:#81788e}
+.vz-bulk-target{padding:14px 0 0}
+.vz-bulk-target .btn{margin-top:13px}
+.vz-bulk-safety{margin:10px 0;font-size:11px;color:#81798c;line-height:1.45}
+.vz-bulk-notice{padding:13px;color:#165f46;background:#e9fcf3;border-radius:12px;font-size:12px;line-height:1.5}
+@media(max-width:365px){.vz-bulk-panel{padding:12px}.vz-bulk-row{padding:11px 7px}.vz-bulk-heading h2{font-size:17px}}
