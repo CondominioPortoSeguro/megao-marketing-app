@@ -46,3 +46,6 @@ As informações da agenda e os textos ficam neste navegador (localStorage). Fot
 - Filtre pela empresa cadastrada por engano, escolha **Este mês** ou **Todas as datas**, marque os compromissos e selecione a nova empresa.
 - Revise e confirme a operação. Apenas a empresa é modificada; datas, horários, status, legendas e anexos permanecem intactos.
 - A alteração é salva somente no navegador atual, junto aos demais registros locais.
+
+## Eventos sinalizados no calendário
+Cada dia agora mostra um traço colorido para cada evento da empresa correspondente, com até quatro traços visíveis e indicador **+N** para os demais. O número informa a quantidade exata de eventos do dia; os filtros por empresa continuam funcionando.

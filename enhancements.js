@@ -144,12 +144,14 @@
     const posts=sortedPosts().filter(p=>ui.filter==='all'||p.brandId===ui.filter);
     const cells=Array.from({length:cellCount},(_,i)=>{
       const d=new Date(year,month-1,1+i-padding),key=dateKey(d),other=d.getMonth()!==month-1;
-      const listed=posts.filter(p=>p.date===key),colors=[...new Set(listed.map(p=>color(p.brandId)))].slice(0,4);
+      const listed=posts.filter(p=>p.date===key);
+      // One short coloured line per event. Extra events show an explicit +N so a busy date stays legible.
+      const shown=listed.slice(0,4),extra=Math.max(0,listed.length-shown.length);
       const label=d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
       return `<button class="vz-day ${other?'vz-other':''} ${key===nowKey()?'vz-today':''} ${key===ui.calendarDate?'vz-selected':''}"
           aria-label="${esc(label)}: ${listed.length} tarefas. Toque para agendar."
           onclick="vzPickDay('${key}')"><span>${d.getDate()}</span>
-          <span class="vz-dots">${colors.map(c=>`<i style="background:${esc(c)}"></i>`).join('')}</span>
+          <span class="vz-event-lines" aria-hidden="true">${shown.map(p=>`<i class="vz-event-line" style="background:${esc(color(p.brandId))}"></i>`).join('')}${extra?`<em class="vz-event-more">+${extra}</em>`:''}</span>
           ${listed.length?`<small>${listed.length}</small>`:''}
         </button>`;
     }).join('');

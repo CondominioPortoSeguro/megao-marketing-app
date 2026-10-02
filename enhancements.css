@@ -63,3 +63,14 @@
 .vz-report-extra .card{margin-bottom:16px}
 @media(max-width:365px){.vz-month-grid{gap:2px}.vz-day{min-height:56px;padding:5px 0}.vz-day>span:first-child{font-size:12px}
 .vz-creative-grid{gap:8px}.vz-creative-body{padding:8px}}
+
+/* Short coloured strokes show event quantity (one per event), rather than unique companies. */
+.vz-event-lines{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:2px;
+ min-height:2px;width:76%;max-width:27px;margin:2px auto 0;pointer-events:none}
+.vz-event-line{display:block;flex:none;height:3px;width:100%;border-radius:5px;box-shadow:0 0 0 .35px #fff3}
+.vz-event-more{font-style:normal;font-size:9px;font-weight:900;line-height:10px;align-self:center;
+ color:#75618e}
+.vz-day.vz-selected .vz-event-more{color:#fff}
+.vz-day:has(.vz-event-line){min-height:70px}
+@media(max-width:365px){.vz-event-lines{gap:2px;max-width:23px}.vz-event-line{height:2.5px}
+ .vz-day:has(.vz-event-line){min-height:65px}}
