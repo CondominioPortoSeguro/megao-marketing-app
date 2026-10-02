@@ -33,3 +33,10 @@ Os dados são locais neste navegador (`localStorage`); não sincronizam entre di
 
 ### Armazenamento e privacidade
 As informações da agenda e os textos ficam neste navegador (localStorage). Fotos e vídeos novos são armazenados localmente pelo IndexedDB, sujeitos ao espaço disponível no aparelho. **Não há sincronização entre celulares**, aviso por notificação nem publicação automática em redes sociais. Antes de limpar dados do navegador ou trocar de celular, lembre que os registros atuais não são transferidos automaticamente.
+
+## Refinamento da interface
+- Cabeçalho com sua foto de perfil; toque nela para editar nome, função e foto.
+- Painel inicial com resumo das tarefas de hoje, próximas tarefas e número de empresas.
+- Atalho **Criar** e botão + do cabeçalho para adicionar rapidamente tarefas, posts ou criativos.
+- Navegação com alvos de toque maiores, componentes reorganizados e animações leves.
+- Foto e dados do perfil ficam no armazenamento local deste navegador; não há conta online ou sincronização de perfil.
