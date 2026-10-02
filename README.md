@@ -48,4 +48,4 @@ As informações da agenda e os textos ficam neste navegador (localStorage). Fot
 - A alteração é salva somente no navegador atual, junto aos demais registros locais.
 
 ## Eventos sinalizados no calendário
-Cada dia agora mostra um traço colorido para cada evento da empresa correspondente, com até quatro traços visíveis e indicador **+N** para os demais. O número informa a quantidade exata de eventos do dia; os filtros por empresa continuam funcionando.
+Cada dia mostra somente traços coloridos, com um traço para cada evento agendado na cor da empresa correspondente. Não há contador numérico abaixo do dia nem indicador +N; todos os traços aparecem. Os filtros por empresa continuam funcionando.

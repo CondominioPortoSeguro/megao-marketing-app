@@ -1,4 +1,4 @@
-const CACHE='vinnyzau-v12';
+const CACHE='vinnyzau-v13';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./enhancements.js','./enhancements.css','./polish.js','./polish.css','./bulk-calendar.js','./bulk-calendar.css'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim();});
