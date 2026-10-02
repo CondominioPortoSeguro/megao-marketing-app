@@ -23,3 +23,13 @@ A integração Git/Vercel atualiza a publicação a cada push em `main`.
 ## Limitações
 
 Os dados são locais neste navegador (`localStorage`); não sincronizam entre dispositivos. Limpar dados do navegador pode apagá-los. Não há publicação automática nas redes sociais e as métricas são manuais. Não é um APK nem precisa da Play Store.
+
+## Agenda e organização (versão atual)
+- Início: acompanhe próximos compromissos de todas as empresas.
+- Ao abrir uma empresa, veja as publicações de hoje, futuras, stories e tarefas em atraso, com hora e legenda.
+- Calendário: visão do mês inteiro com identificação por cores; toque em uma data para criar tarefa, post ou story.
+- Criativos: guarde fotos e vídeos e até três versões de texto/legenda por material; use o material salvo para criar posts.
+- Relatórios: indicadores que você cadastrou manualmente + estatísticas de posts do próprio aplicativo e dicas de organização.
+
+### Armazenamento e privacidade
+As informações da agenda e os textos ficam neste navegador (localStorage). Fotos e vídeos novos são armazenados localmente pelo IndexedDB, sujeitos ao espaço disponível no aparelho. **Não há sincronização entre celulares**, aviso por notificação nem publicação automática em redes sociais. Antes de limpar dados do navegador ou trocar de celular, lembre que os registros atuais não são transferidos automaticamente.

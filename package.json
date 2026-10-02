@@ -1,8 +1,8 @@
 {
-  "name": "megao-marketing-pwa",
+  "name": "vinnyzau-pwa",
   "private": true,
   "version": "1.0.0",
-  "description": "Megão Marketing - site instalável (PWA)",
+  "description": "Vinnyzau - app de marketing instalável (PWA)",
   "scripts": {
     "test": "node tests/smoke.js && node tests/upgrades.js"
   }
