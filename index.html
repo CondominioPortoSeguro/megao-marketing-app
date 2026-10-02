@@ -40,6 +40,6 @@ async function installApp(){
  if(ui.installPrompt){const promptEvent=ui.installPrompt;ui.installPrompt=null;try{await promptEvent.prompt();const outcome=await promptEvent.userChoice;if(outcome?.outcome!=='accepted')showModal('install');else if(ui.page==='home')render();}catch{showModal('install');}}
  else showModal('install');
 }
-if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js').catch(err=>console.warn('Instalação offline indisponível:',err));
+if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>reg.update()).catch(err=>console.warn('Instalação offline indisponível:',err));
 render();
 </script></body></html>
