@@ -1,7 +1,7 @@
 {
-  "name": "Megão Marketing - Gestão de Marketing",
-  "short_name": "Megão Marketing",
-  "description": "Organize estabelecimentos, calendário, criativos e métricas",
+  "name": "Vinnyzau Gestão",
+  "short_name": "Vinnyzau Gestão",
+  "description": "Gestão de marketing, estabelecimentos, calendário e criativos",
   "id": "./",
   "start_url": "./index.html",
   "scope": "./",

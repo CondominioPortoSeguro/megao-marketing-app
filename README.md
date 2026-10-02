@@ -1,4 +1,4 @@
-# Megão Marketing — aplicativo web instalável
+# Vinnyzau Gestão — aplicativo web instalável
 
 Aplicativo **PWA** para gerir estabelecimentos, calendário, posts, criativos e métricas. O projeto é separado dos demais aplicativos. Repositório: `CondominioPortoSeguro/megao-marketing-app`.
 
