@@ -23,7 +23,7 @@ db.posts=[{id:'fix1',brandId:brandA,type:'Story',title:'Story da manhã',date:fu
  {id:'fix2',brandId:brandA,type:'Post Feed',title:'Feed da tarde',date:later,time:'16:45',
  caption:'Legenda que não pode mudar',status:'Rascunho',mediaRef:'m-001'},
  {id:'keep',brandId:brandB,type:'Vídeo',title:'Outra empresa',date:later,time:'11:00',caption:'Não alterar',status:'Programado'}];
-context.ui.monthCursor='2030-09';context.go('calendar');
+vm.runInContext("ui.monthCursor='2030-09';go('calendar')",context);
 context.vzBulkOpen();
 assert(app.html.includes('Corrigir empresa em lote'));
 assert(app.html.includes('Empresa cadastrada por engano'));
