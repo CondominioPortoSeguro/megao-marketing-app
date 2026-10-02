@@ -29,7 +29,7 @@
     return '<div class="vz-layer" role="presentation" onclick="if(event.target===this)vzClosePanel()">'+
       '<section class="vz-sheet" role="dialog" aria-modal="true" aria-labelledby="vz-profile-title">'+
         '<div class="vz-sheet-grip" aria-hidden="true"></div>'+
-        '<div class="vz-sheet-top"><div><div class="vz-overline">CONTA LOCAL</div><h2 id="vz-profile-title">Meu perfil</h2></div><button type="button" class="vz-close" aria-label="Fechar perfil" onclick="vzClosePanel()">×</button></div>'+
+        '<div class="vz-sheet-top"><div><div class="vz-overline">PERFIL E APARÊNCIA</div><h2 id="vz-profile-title">Configurações</h2></div><button type="button" class="vz-close" aria-label="Fechar configurações" onclick="vzClosePanel()">×</button></div>'+
         '<form onsubmit="vzSaveProfile(event)">'+
         '<div class="vz-profile-photo">'+avatar('vz-avatar vz-avatar-large')+
            '<div><strong>Sua foto</strong><p>Personalize o aplicativo com a sua imagem.</p>'+
@@ -37,9 +37,22 @@
            '<input id="vzPhotoInput" class="vz-visually-hidden" type="file" accept="image/png,image/jpeg,image/webp" onchange="vzPreviewPhoto(this)"></div></div>'+
         '<div class="form-field"><label for="vzName">Nome de exibição</label><input class="input" id="vzName" name="name" maxlength="50" autocomplete="name" value="'+esc(profile.name)+'" placeholder="Como prefere ser chamado?"></div>'+
         '<div class="form-field"><label for="vzRole">Sua função</label><input class="input" id="vzRole" name="role" maxlength="70" value="'+esc(profile.role)+'" placeholder="Ex.: Marketing e conteúdo"></div>'+
+        themePicker()+
         '<p class="vz-small-note">Seu perfil, suas tarefas e suas fotos ficam neste dispositivo. Eles não são sincronizados automaticamente.</p>'+
         '<button type="submit" class="btn primary full">Salvar perfil</button>'+
         '</form><div class="vz-sheet-footer">'+esc(date)+'</div></section></div>';
+  }
+  function themePicker(){
+    const selected=window.vzActiveTheme||'roxo';
+    const choices=[['claro','☀','Claro'],['noturno','☾','Noturno'],['verde','❧','Verde'],['azul','◈','Azul'],['roxo','✦','Roxo']];
+    return '<section class="vz-theme-section" aria-label="Temas de layout">'+
+      '<h3>🎨 Aparência e tema</h3><p class="vz-theme-intro">Personalize as cores do aplicativo. Os textos e os ícones se adaptam automaticamente.</p>'+
+      '<div class="vz-theme-grid" role="radiogroup" aria-label="Escolher tema">'+
+      choices.map(([value,icon,label])=>'<label class="vz-theme-choice" data-theme="'+value+'">'+
+       '<input type="radio" name="vzTheme" value="'+value+'" '+(selected===value?'checked':'')+
+       ' onchange="vzChooseTheme(this.value)">'+
+       '<span class="vz-theme-swatch" aria-hidden="true">'+icon+'</span><span>'+label+'</span></label>').join('')+
+       '</div><p id="vzThemeStatus" class="vz-theme-status" role="status">Tema selecionado: '+selected+'.</p></section>';
   }
   function quickHTML(){
     return '<div class="vz-layer" role="presentation" onclick="if(event.target===this)vzClosePanel()">'+
@@ -60,7 +73,7 @@
         '<div class="vz-wordmark"><span class="vz-wordmark-icon">V</span><span>vinnyzau<small>STUDIO</small></span></div>'+
         '<div class="vz-header-right">'+
         '<button type="button" aria-label="Criar nova tarefa ou conteúdo" class="vz-top-plus" onclick="vzOpenQuick()">＋</button>'+
-        '<button type="button" aria-label="Abrir meu perfil" class="vz-profile-trigger" onclick="vzOpenProfile()">'+avatar()+'</button>'+
+        '<button type="button" aria-label="Abrir configurações do perfil" class="vz-profile-trigger" onclick="vzOpenProfile()">'+avatar()+'</button>'+
         '</div></div>');
       if(ui.page==='home'){
         const hero=inner.querySelector('.hero');

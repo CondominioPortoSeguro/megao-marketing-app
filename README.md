@@ -49,3 +49,6 @@ As informações da agenda e os textos ficam neste navegador (localStorage). Fot
 
 ## Eventos sinalizados no calendário
 Cada dia mostra somente traços coloridos, com um traço para cada evento agendado na cor da empresa correspondente. Não há contador numérico abaixo do dia nem indicador +N; todos os traços aparecem. Os filtros por empresa continuam funcionando.
+
+## Configurações de aparência
+Toque na foto de perfil para abrir **Configurações**. Além de editar foto, nome e função, selecione os temas Claro, Noturno, Verde, Azul ou Roxo. O tema altera também as cores dos textos, ícones e controles e permanece salvo no navegador atual.
