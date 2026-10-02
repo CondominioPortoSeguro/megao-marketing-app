@@ -40,3 +40,9 @@ As informações da agenda e os textos ficam neste navegador (localStorage). Fot
 - Atalho **Criar** e botão + do cabeçalho para adicionar rapidamente tarefas, posts ou criativos.
 - Navegação com alvos de toque maiores, componentes reorganizados e animações leves.
 - Foto e dados do perfil ficam no armazenamento local deste navegador; não há conta online ou sincronização de perfil.
+
+## Correção de empresas em lote no calendário
+- Abra **Calendário → Corrigir empresa em lote**.
+- Filtre pela empresa cadastrada por engano, escolha **Este mês** ou **Todas as datas**, marque os compromissos e selecione a nova empresa.
+- Revise e confirme a operação. Apenas a empresa é modificada; datas, horários, status, legendas e anexos permanecem intactos.
+- A alteração é salva somente no navegador atual, junto aos demais registros locais.
